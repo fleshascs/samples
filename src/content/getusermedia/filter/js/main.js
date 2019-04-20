@@ -15,14 +15,28 @@ const filterSelect = document.querySelector('select#filter');
 const video = window.video = document.querySelector('video');
 const canvasVideo = document.querySelector('.mirror');
 const slider = document.querySelector('.slider');
+const sliderValue = document.querySelector('.sliderValue');
 const ctx = canvasVideo.getContext('2d');
 const canvas = window.canvas = document.querySelector('.photo');
+let threshold = 100;
 canvas.width = 480;
 canvas.height = 360;
 
-slider.addEventListener('change', (e) => {
-  console.log('e', e);
+slider.addEventListener('input', (e) => {
+  const value = e.currentTarget.value;
+  threshold = value;
+  updateSliderValue(value);
 });
+
+slider.addEventListener('change', (e) => {
+  const value = e.currentTarget.value;
+  threshold = value;
+  updateSliderValue(value);
+});
+
+function updateSliderValue(value){
+  sliderValue.innerText = value;
+}
 
 snapshotButton.onclick = function() {
   canvas.className = filterSelect.value;
@@ -70,10 +84,9 @@ function paintToCanvas(){
 
 function redEffect(pixels){
   for(let i = 0; i < pixels.data.length; i+=4){
-    pixels.data[i + 0] = pixels.data[i + 0] + 100;
+    pixels.data[i + 0] = pixels.data[i + 0] + threshold;
     pixels.data[i + 1] = pixels.data[i + 1] - 50;
     pixels.data[i + 2] = pixels.data[i + 2] * 0.5;
-    pixels.data[i + 3] = pixels.data[i + 3] * 0.9;
   }
   return pixels;
 }
