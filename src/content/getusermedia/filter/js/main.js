@@ -22,7 +22,7 @@ let threshold = 100;
 canvas.width = 480;
 canvas.height = 360;
 
-slider.addEventListener('input', updateSliderValue);
+//slider.addEventListener('input', updateSliderValue);
 slider.addEventListener('change', updateSliderValue);
 
 function updateSliderValue(e){
@@ -71,7 +71,6 @@ function paintToCanvas(){
         let pixels = ctx.getImageData(0,0, width, height);
         pixels = redEffect(pixels, threshold);
         ctx.putImageData(pixels, 0,0);
-        
     }, 16);
 
 }
