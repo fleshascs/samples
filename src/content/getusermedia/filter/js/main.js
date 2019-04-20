@@ -28,8 +28,7 @@ slider.addEventListener('change', updateSliderValue);
 function updateSliderValue(e){
   const value = e.currentTarget.value;
   sliderValue.innerText = value;
-  threshold = e.currentTarget.value;// value*0.9999;
-  //console.log('threshold', threshold);
+  threshold = Number(value);
 }
 
 snapshotButton.onclick = function() {
@@ -49,7 +48,6 @@ const constraints = {
 function handleSuccess(stream) {
   window.stream = stream; // make stream available to browser console
   video.srcObject = stream;
-  console.log('test handleSuccess');
   video.play().then(() =>{
     paintToCanvas();
   });
@@ -67,8 +65,6 @@ function paintToCanvas(){
     canvasVideo.width = width;
     canvasVideo.height = height;
 
-    console.log('test paintToCanvas');
-
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
         let pixels = ctx.getImageData(0,0, width, height);
@@ -79,10 +75,9 @@ function paintToCanvas(){
 }
 
 function redEffect(pixels, threshold){
-  console.log('threshold**', threshold);
   for(let i = 0; i < pixels.data.length; i+=4){
     pixels.data[i + 0] = pixels.data[i + 0] + threshold;
-   // pixels.data[i + 1] = pixels.data[i + 1] - 50;
+    //pixels.data[i + 1] = pixels.data[i + 1] - 50;
     //pixels.data[i + 2] = pixels.data[i + 2] * 0.5;
   }
   return pixels;
