@@ -38,8 +38,9 @@ const constraints = {
 function handleSuccess(stream) {
   window.stream = stream; // make stream available to browser console
   video.srcObject = stream;
-  alert('handle stream');
-  paintToCanvas();
+  video.play().then(() =>{
+    paintToCanvas();
+  });
 }
 
 function handleError(error) {
@@ -49,12 +50,12 @@ function handleError(error) {
 navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 
 function paintToCanvas(){
-    const width = 480;//video.videoWidth;
-    const height = 480;//video.videoHeight;
-    //canvasVideo.width = width;
-    //canvasVideo.height = height;
-
-    alert('starting painting');
+    //const width = 480;
+    //const height = 480;
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+    canvasVideo.width = width;
+    canvasVideo.height = height;
 
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
