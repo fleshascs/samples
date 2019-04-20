@@ -13,7 +13,9 @@ const filterSelect = document.querySelector('select#filter');
 
 // Put variables in global scope to make them available to the browser console.
 const video = window.video = document.querySelector('video');
-const canvas = window.canvas = document.querySelector('canvas');
+const canvasVideo = document.querySelector('.mirror');
+const ctx = canvasVideo.getContext('2d');
+const canvas = window.canvas = document.querySelector('.photo');
 canvas.width = 480;
 canvas.height = 360;
 
@@ -34,6 +36,8 @@ const constraints = {
 function handleSuccess(stream) {
   window.stream = stream; // make stream available to browser console
   video.srcObject = stream;
+
+  paintToCanvas();
 }
 
 function handleError(error) {
@@ -41,3 +45,14 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+
+function paintToCanvas(){
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+    canvasVideo.width = width;
+    canvasVideo.height = height;
+
+    return setInterval(() => {
+        ctx.drawImage(video, 0, 0, width, height);
+    }, 16);
+}
