@@ -22,7 +22,7 @@ let threshold = 100;
 canvas.width = 480;
 canvas.height = 360;
 
-//slider.addEventListener('input', updateSliderValue);
+slider.addEventListener('input', updateSliderValue);
 slider.addEventListener('change', updateSliderValue);
 
 function updateSliderValue(e){
@@ -49,6 +49,7 @@ const constraints = {
 function handleSuccess(stream) {
   window.stream = stream; // make stream available to browser console
   video.srcObject = stream;
+  console.log('test handleSuccess');
   video.play().then(() =>{
     paintToCanvas();
   });
@@ -65,6 +66,8 @@ function paintToCanvas(){
     const height = video.videoHeight;
     canvasVideo.width = width;
     canvasVideo.height = height;
+
+    console.log('test paintToCanvas');
 
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
