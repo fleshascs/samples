@@ -49,8 +49,8 @@ function handleError(error) {
 navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 
 function paintToCanvas(){
-    const width = video.videoWidth;
-    const height = video.videoHeight;
+    const width = 480;//video.videoWidth;
+    const height = 480;//video.videoHeight;
     //canvasVideo.width = width;
     //canvasVideo.height = height;
 
