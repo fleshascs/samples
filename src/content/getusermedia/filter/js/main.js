@@ -49,8 +49,8 @@ navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handl
 function paintToCanvas(){
     const width = video.videoWidth;
     const height = video.videoHeight;
-    canvasVideo.width = width;
-    canvasVideo.height = height;
+    //canvasVideo.width = width;
+    //canvasVideo.height = height;
 
     alert('starting painting');
 
