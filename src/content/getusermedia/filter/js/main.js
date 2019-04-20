@@ -70,7 +70,7 @@ function redEffect(pixels){
     pixels.data[i + 0] = pixels.data[i + 0] + 100;
     pixels.data[i + 1] = pixels.data[i + 1] - 50;
     pixels.data[i + 2] = pixels.data[i + 2] * 0.5;
-    pixels.data[i + 3] = pixels.data[i + 3] * 0.2;
+    pixels.data[i + 3] = pixels.data[i + 3] * 0.9;
   }
   return pixels;
 }
