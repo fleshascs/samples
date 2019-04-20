@@ -52,6 +52,8 @@ function paintToCanvas(){
     canvasVideo.width = width;
     canvasVideo.height = height;
 
+    alert('starting painting');
+
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
     }, 16);
