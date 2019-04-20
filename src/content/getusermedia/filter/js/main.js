@@ -77,6 +77,7 @@ function paintToCanvas(){
 }
 
 function redEffect(pixels, threshold){
+  console.log('threshold**', threshold);
   for(let i = 0; i < pixels.data.length; i+=4){
     pixels.data[i + 0] = pixels.data[i + 0] + threshold;
    // pixels.data[i + 1] = pixels.data[i + 1] - 50;
