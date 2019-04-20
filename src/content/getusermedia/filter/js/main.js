@@ -50,14 +50,10 @@ function handleError(error) {
 navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 
 function paintToCanvas(){
-    //const width = 480;
-    //const height = 480;
     const width = video.videoWidth;
     const height = video.videoHeight;
     canvasVideo.width = width;
     canvasVideo.height = height;
-
-    
 
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
@@ -74,6 +70,7 @@ function redEffect(pixels){
     pixels.data[i + 0] = pixels.data[i + 0] + 100;
     pixels.data[i + 1] = pixels.data[i + 1] - 50;
     pixels.data[i + 2] = pixels.data[i + 2] * 0.5;
+    pixels.data[i + 3] = pixels.data[i + 3] * 0.2;
   }
   return pixels;
 }
