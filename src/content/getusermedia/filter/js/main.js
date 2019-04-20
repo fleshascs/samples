@@ -29,7 +29,7 @@ function updateSliderValue(e){
   const value = e.currentTarget.value;
   sliderValue.innerText = value;
   //threshold = value;
-  console.log('threshold', threshold);
+  //console.log('threshold', threshold);
 }
 
 snapshotButton.onclick = function() {
