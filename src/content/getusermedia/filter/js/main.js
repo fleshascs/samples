@@ -22,20 +22,14 @@ let threshold = 100;
 canvas.width = 480;
 canvas.height = 360;
 
-slider.addEventListener('input', (e) => {
-  const value = e.currentTarget.value;
-  threshold = value;
-  updateSliderValue(value);
-});
+slider.addEventListener('input', updateSliderValue);
+slider.addEventListener('change', updateSliderValue);
 
-slider.addEventListener('change', (e) => {
+function updateSliderValue(e){
   const value = e.currentTarget.value;
-  threshold = value;
-  updateSliderValue(value);
-});
-
-function updateSliderValue(value){
   sliderValue.innerText = value;
+  threshold = value;
+  console.log('threshold', threshold);
 }
 
 snapshotButton.onclick = function() {
@@ -84,7 +78,7 @@ function paintToCanvas(){
 
 function redEffect(pixels, threshold){
   for(let i = 0; i < pixels.data.length; i+=4){
-    pixels.data[i + 0] = pixels.data[i + 0] + 5;
+    pixels.data[i + 0] = pixels.data[i + 0] + threshold;
    // pixels.data[i + 1] = pixels.data[i + 1] - 50;
     //pixels.data[i + 2] = pixels.data[i + 2] * 0.5;
   }
