@@ -28,7 +28,7 @@ slider.addEventListener('change', updateSliderValue);
 function updateSliderValue(e){
   const value = e.currentTarget.value;
   sliderValue.innerText = value;
-  threshold = value;
+  //threshold = value;
   console.log('threshold', threshold);
 }
 
