@@ -1,3 +1,3 @@
 <?php
 
-echo 'test';
+header('Location: /src/index.html');
